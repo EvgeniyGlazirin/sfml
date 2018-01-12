@@ -1,0 +1,107 @@
+// модель программы движения указателя за стрелкой мыши
+
+
+//  инициализируем указатель
+void init(sf::ConvexShape &pointer)
+{
+}
+
+// Обновляет фигуру, указывающую на мышь
+void setPointerRotation(const sf::Vector2f &mousePosition, sf::ConvexShape &pointer, float dt)
+{
+    // установим максимальный угол попорота стрелки
+    maxRotationPerSecond 
+
+
+    //получим разнуцу позиций  мыши и указателя
+     delta = mousePosition - pointer.getPosition();
+    
+    //получим угол от 0 до 360
+     float angle = atan2(delta.y, delta.x);
+    if (angle < 0)
+    {
+        angle = angle + 2 * M_PI;
+    }
+    angle = toDegrees(angle);
+
+    // найдем  нужный угол поворота(минимальный из реального угла поворота и максимально возможного за период времени)
+    const float maxRotation = maxRotationPerSecond * dt;
+    const float realRotation = std::abs(angle - pointer.getRotation());
+    const float minRotation = std::min(realRotation, maxRotation);
+    // в какую сторону поворачивать
+    if (angle > pointer.getRotation())
+    {
+        if (angle - 180 > pointer.getRotation())
+        {
+            pointer.setRotation(pointer.getRotation() - minRotation);
+        }
+        else
+        {
+            pointer.setRotation(pointer.getRotation() + minRotation);
+        }
+    }
+    else
+    {
+        if (angle + 180 < pointer.getRotation())
+        {
+            pointer.setRotation(pointer.getRotation() + minRotation);
+        }
+        else
+        {
+            pointer.setRotation(pointer.getRotation() - minRotation);
+        }
+    }
+}
+
+//  двжения указателя
+void update(const sf::Vector2f &mousePosition, sf::ConvexShape &pointer, float dt)
+{
+    // макс скорость
+    const float maxSpeed 
+
+    //вычислить вектор полного перемещения
+    sf::Vector2f motion = mousePosition - pointer.getPosition();
+
+    // выичслить длину полного вектора перемещения
+    sqrt(pow(motion.x, 2) + pow(motion.y, 2));
+
+    // вычислить максимальное расстояниепройденное за кадр
+    maxSpeed * dt;
+
+    // добавим к точке направление, умноденное на длину пройденного за кадр пути
+    setPointerRotation(mousePosition, pointer, dt);
+
+    //нормализуем вектор(вектор направления движения)
+     {float(motion.x / length), float(motion.y / length)};
+
+    // вычисляем смещение
+    const sf::Vector2f offset = {(direction.x * movePerDt), (direction.y * movePerDt)};
+
+    // установить новое значение положения указателя
+    pointer.setPosition(pointer.getPosition() + offset);
+}
+
+
+// обработчик событий
+void pollEvents(sf::RenderWindow &window, sf::Vector2f &mousePosition)
+{
+}
+
+// перерисовывает картинку на каждом кадре
+void redrawFrame(sf::RenderWindow &window, sf::ConvexShape &pointer)
+{
+}
+
+int main()
+{
+    // объявление переменных, области окна, настроек
+
+
+    // выполняем действия пока открыто окно
+    while (window.isOpen())
+    {
+       // обработчик событий
+       // обновление элементов
+       // перерисовывает картинку на каждом кадре
+    }
+}
