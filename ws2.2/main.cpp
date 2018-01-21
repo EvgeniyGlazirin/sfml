@@ -124,8 +124,7 @@ int main()
 
     sf::ContextSettings settings;
     settings.antialiasingLevel = ANTIALIASING_LEVEL;
-    sf::RenderWindow window(sf::VideoMode({WINDOW_WIDTH, WINDOW_HEIGHT}), "Running balls are
-                            fly away from each other ", sf::Style::Default, settings);
+    sf::RenderWindow window(sf::VideoMode({WINDOW_WIDTH, WINDOW_HEIGHT}), "Collision", sf::Style::Default, settings);
 
     sf::Clock clock;
     constexpr unsigned ballsCount = 5;
