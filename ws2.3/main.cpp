@@ -67,7 +67,7 @@ double calculateScalarProduct(const sf::Vector2f &i, const sf::Vector2f &j)
 {
     sf::Vector2f temp;
     temp.x = i.x * j.x;
-    temp.y = i.y + j.y;
+    temp.y = i.y * j.y;
     float total = (temp.x + temp.y);
     return total;
 }

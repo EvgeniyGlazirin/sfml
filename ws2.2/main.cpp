@@ -1,5 +1,3 @@
-// отталкивание шаров друг от друга происходит неверно, не могу разобраться в чем причина
-
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <cmath>
@@ -19,7 +17,7 @@ double calculateScalarProduct(const sf::Vector2f &i, const sf::Vector2f &j)
 {
     sf::Vector2f temp;
     temp.x = i.x * j.x;
-    temp.y = i.y + j.y;
+    temp.y = i.y * j.y;
     double total = (temp.x + temp.y);
     return total;
 }
